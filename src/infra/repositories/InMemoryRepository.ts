@@ -1,6 +1,5 @@
 import { Note } from "../../domain/entities/note";
 import NoteRepository from "../../application/repositories/NoteRepository";
-import NoteNotFoundError from "../../domain/errors/NoteNotFoundError";
 
 class InMemoryRepository implements NoteRepository {
   private notes: Note[] = [];
@@ -13,8 +12,22 @@ class InMemoryRepository implements NoteRepository {
       },
     ];
   }
+  async removeNote(id: number): Promise<void> {
+    for (let i = 0; i < this.notes.length; i++) {
+      if (this.notes[i].id === id) {
+        delete this.notes[i];
+      }
+    }
+  }
+  async updateNote(id: number, input: Note): Promise<void> {
+    for (let i = 0; i < this.notes.length; i++) {
+      if (this.notes[i].id === id) {
+        this.notes[i] = { ...input, id: id };
+      }
+    }
+  }
   async getNoteById(id: number): Promise<Note | undefined> {
-    const note = await this.notes.find((note) => note.id === id);
+    const note = await this.notes.find((note) => note?.id === id);
     return note;
   }
   async getNotes(): Promise<Note[]> {

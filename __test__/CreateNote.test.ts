@@ -2,7 +2,7 @@ import CreateNote from "../src/application/usecases/CreateNote";
 import GetNotes from "../src/application/usecases/GetNotes";
 import repository from "../src/infra/repositories/InMemoryRepository";
 
-test("Creating a note", async () => {
+test("should create a note", async () => {
   const create = new CreateNote(repository);
   const get = new GetNotes(repository);
   const input = {
