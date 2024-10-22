@@ -1,0 +1,16 @@
+
+get http://localhost:3000/notes
+
+### 
+
+get http://localhost:3000/notes/3
+
+### 
+
+post http://localhost:3000/notes
+Content-Type: application/json
+
+{
+  "title": "Note 002",
+  "body": "Body note"
+}
