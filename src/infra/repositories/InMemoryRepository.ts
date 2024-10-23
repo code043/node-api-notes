@@ -12,20 +12,7 @@ class InMemoryRepository implements NoteRepository {
       },
     ];
   }
-  async removeNote(id: number): Promise<void> {
-    for (let i = 0; i < this.notes.length; i++) {
-      if (this.notes[i].id === id) {
-        delete this.notes[i];
-      }
-    }
-  }
-  async updateNote(id: number, input: Note): Promise<void> {
-    for (let i = 0; i < this.notes.length; i++) {
-      if (this.notes[i].id === id) {
-        this.notes[i] = { ...input, id: id };
-      }
-    }
-  }
+
   async getNoteById(id: number): Promise<Note | undefined> {
     const note = await this.notes.find((note) => note?.id === id);
     return note;
@@ -39,6 +26,21 @@ class InMemoryRepository implements NoteRepository {
       id: this.notes.length + 1,
     };
     await this.notes.push(newNote);
+  }
+  async removeNote(id: number): Promise<void> {
+    for (let i = 0; i < this.notes.length; i++) {
+      if (this.notes[i].id === id) {
+        this.notes.splice(i, 1);
+        break;
+      }
+    }
+  }
+  async updateNote(id: number, input: Note): Promise<void> {
+    for (let i = 0; i < this.notes.length; i++) {
+      if (this.notes[i].id === id) {
+        this.notes[i] = { ...input, id: id };
+      }
+    }
   }
 }
 export default new InMemoryRepository();

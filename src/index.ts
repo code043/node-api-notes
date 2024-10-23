@@ -4,6 +4,8 @@ import respository from "./infra/repositories/InMemoryRepository";
 import CreateNote from "./application/usecases/CreateNote";
 import GetNoteById from "./application/usecases/GetNoteById.";
 import NoteNotFoundError from "./domain/errors/NoteNotFoundError";
+import UpdateNote from "./application/usecases/UpdateNote";
+import DeleteNote from "./application/usecases/DeleteNote";
 
 const app = express();
 
@@ -38,6 +40,28 @@ app.get("/notes/:id", async (req, res) => {
       });
     }
   }
+});
+app.put("/notes/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const updateNote = new UpdateNote(respository);
+  try {
+    await updateNote.execute(Number(id), req.body);
+    res.status(200).json({
+      message: "Note with ID " + id + " has updated",
+    });
+  } catch (error) {}
+});
+app.delete("/notes/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const deleteNote = new DeleteNote(respository);
+  try {
+    await deleteNote.execute(Number(id));
+    res.status(200).json({
+      message: "Note with ID " + id + " has deleted",
+    });
+  } catch (error) {}
 });
 
 app.post("/notes", async (req, res) => {
