@@ -9,6 +9,7 @@ class InMemoryRepository implements NoteRepository {
         id: 1,
         title: "Note",
         body: "Annotations...",
+        date: new Date("2024-10-23T17:48:30.044Z"),
       },
     ];
   }
@@ -23,6 +24,7 @@ class InMemoryRepository implements NoteRepository {
   async createNote(input: Note): Promise<void> {
     const newNote = {
       ...input,
+      date: new Date(),
       id: this.notes.length + 1,
     };
     await this.notes.push(newNote);
