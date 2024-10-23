@@ -23,9 +23,9 @@ class InMemoryRepository implements NoteRepository {
   }
   async createNote(input: Note): Promise<void> {
     const newNote = {
+      id: this.notes.length + 1,
       ...input,
       date: new Date(),
-      id: this.notes.length + 1,
     };
     await this.notes.push(newNote);
   }

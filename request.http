@@ -1,12 +1,22 @@
 
-get http://localhost:3000/notes
+get http://localhost:3000/api/notes
 
 ### 
 
-get http://localhost:3000/notes/1
+get http://localhost:3000/api/notes/1
+
+###
+
+post http://localhost:3000/api/notes
+Content-Type: application/json
+
+{
+  "title": "Note 002",
+  "body": "Body note"
+}
 
 ### 
-put http://localhost:3000/notes/2
+put http://localhost:3000/api/notes/2
 Content-Type: application/json
 
 {
@@ -15,14 +25,7 @@ Content-Type: application/json
 }
 
 ### 
-delete http://localhost:3000/notes/3
+delete http://localhost:3000/api/notes/3
 
 ### 
 
-post http://localhost:3000/notes
-Content-Type: application/json
-
-{
-  "title": "Note 002",
-  "body": "Body note"
-}
