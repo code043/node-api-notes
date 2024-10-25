@@ -6,11 +6,12 @@ import NoteNotFoundError from "../../domain/errors/NoteNotFoundError";
 import CreateNote from "../../application/usecases/CreateNote";
 import UpdateNote from "../../application/usecases/UpdateNote";
 import DeleteNote from "../../application/usecases/DeleteNote";
+import PrismaRepository from "../../infra/repositories/PrismaRepository";
 
 export const NoteController = {
   async getAllNotes(req: Request, res: Response) {
     try {
-      const getNotes = new GetNotes(InMemoryRepository);
+      const getNotes = new GetNotes(PrismaRepository);
       const notes = await getNotes.execute();
       res.status(200).json({
         quantity: notes.length,
@@ -24,7 +25,7 @@ export const NoteController = {
   async getNoteById(req: Request, res: Response) {
     //
     const { id } = req.params;
-    const getNote = new GetNoteById(InMemoryRepository);
+    const getNote = new GetNoteById(PrismaRepository);
     try {
       const note = await getNote.execute(Number(id));
       if (!note?.id) throw new NoteNotFoundError(Number(id));
@@ -44,7 +45,7 @@ export const NoteController = {
     }
   },
   async createNote(req: Request, res: Response) {
-    const createNote = new CreateNote(InMemoryRepository);
+    const createNote = new CreateNote(PrismaRepository);
     await createNote.execute(req.body);
     res.status(201).json({
       message: "Note has created",
@@ -54,7 +55,7 @@ export const NoteController = {
   async updateNote(req: Request, res: Response) {
     const { id } = req.params;
 
-    const updateNote = new UpdateNote(InMemoryRepository);
+    const updateNote = new UpdateNote(PrismaRepository);
     try {
       await updateNote.execute(Number(id), req.body);
       res.status(200).json({
@@ -66,7 +67,7 @@ export const NoteController = {
   async removeNote(req: Request, res: Response) {
     const { id } = req.params;
 
-    const deleteNote = new DeleteNote(InMemoryRepository);
+    const deleteNote = new DeleteNote(PrismaRepository);
     try {
       await deleteNote.execute(Number(id));
       res.status(200).json({
