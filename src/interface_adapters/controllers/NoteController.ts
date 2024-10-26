@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import GetNotes from "../../application/usecases/GetNotes";
-import InMemoryRepository from "../../infra/repositories/InMemoryRepository";
+
 import GetNoteById from "../../application/usecases/GetNoteById.";
 import NoteNotFoundError from "../../domain/errors/NoteNotFoundError";
 import CreateNote from "../../application/usecases/CreateNote";
@@ -62,7 +62,11 @@ export const NoteController = {
         message: "Note with ID " + id + " has updated",
         note: req.body,
       });
-    } catch (error) {}
+    } catch (error: any) {
+      res.status(400).json({
+        message: error.message,
+      });
+    }
   },
   async removeNote(req: Request, res: Response) {
     const { id } = req.params;
@@ -73,6 +77,10 @@ export const NoteController = {
       res.status(200).json({
         message: "Note with ID " + id + " has deleted",
       });
-    } catch (error) {}
+    } catch (error: any) {
+      res.status(400).json({
+        message: error.message,
+      });
+    }
   },
 };

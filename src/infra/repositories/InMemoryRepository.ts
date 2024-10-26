@@ -29,18 +29,19 @@ class InMemoryRepository implements NoteRepository {
     };
     await this.notes.push(newNote);
   }
+
+  async updateNote(id: number, input: Note): Promise<void> {
+    for (let i = 0; i < this.notes.length; i++) {
+      if (this.notes[i].id === id) {
+        this.notes[i] = { ...input, id: id };
+      }
+    }
+  }
   async removeNote(id: number): Promise<void> {
     for (let i = 0; i < this.notes.length; i++) {
       if (this.notes[i].id === id) {
         this.notes.splice(i, 1);
         break;
-      }
-    }
-  }
-  async updateNote(id: number, input: Note): Promise<void> {
-    for (let i = 0; i < this.notes.length; i++) {
-      if (this.notes[i].id === id) {
-        this.notes[i] = { ...input, id: id };
       }
     }
   }
