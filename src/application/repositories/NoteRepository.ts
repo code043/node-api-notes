@@ -1,4 +1,4 @@
-import { Note } from "../../domain/entities/note";
+import Note from "../../domain/entities/note";
 
 export default interface NoteRepository {
   getNotes(): Promise<Note[]>;

@@ -1,6 +1,6 @@
 import GetNoteById from "../src/application/usecases/GetNoteById.";
 import UpdateNote from "../src/application/usecases/UpdateNote";
-import repository from "../src/infra/repositories/InMemoryRepository";
+import repository from "../src/infra/repositories/in-memory/note/InMemoryRepository";
 
 test("should update a note", async () => {
   const update = new UpdateNote(repository);

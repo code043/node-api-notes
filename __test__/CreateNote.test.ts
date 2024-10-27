@@ -1,6 +1,6 @@
 import CreateNote from "../src/application/usecases/note/CreateNote";
 import GetNotes from "../src/application/usecases/note/GetNotes";
-import repository from "../src/infra/repositories/InMemoryRepository";
+import repository from "../src/infra/repositories/in-memory/note/InMemoryRepository";
 import prismaRepository from "../src/infra/repositories/PrismaRepository";
 
 const mockDate = new Date("2024-10-23T17:48:30.044Z");

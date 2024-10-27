@@ -1,4 +1,4 @@
-export class Note {
+export default class Note {
   constructor(
     readonly title: string,
     readonly body: string,

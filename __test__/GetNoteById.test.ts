@@ -1,5 +1,5 @@
-import GetNoteById from "../src/application/usecases/GetNoteById.";
-import repository from "../src/infra/repositories/InMemoryRepository";
+import GetNoteById from "../src/application/usecases/note/GetNoteById.";
+import repository from "../src/infra/repositories/in-memory/note/InMemoryRepository";
 
 test("should get a note by ID", async () => {
   const usecase = new GetNoteById(repository);

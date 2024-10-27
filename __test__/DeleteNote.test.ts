@@ -1,6 +1,6 @@
 import DeleteNote from "../src/application/usecases/DeleteNote";
 import GetNoteById from "../src/application/usecases/GetNoteById.";
-import repository from "../src/infra/repositories/InMemoryRepository";
+import repository from "../src/infra/repositories/in-memory/note/InMemoryRepository";
 
 test("should delete a note by ID", async () => {
   const usecase = new DeleteNote(repository);

@@ -1,5 +1,5 @@
-import { Note } from "../../domain/entities/note";
-import NoteRepository from "../../application/repositories/NoteRepository";
+import { Note } from "@prisma/client";
+import NoteRepository from "../../../../application/repositories/NoteRepository";
 
 class InMemoryRepository implements NoteRepository {
   private notes: Note[] = [];
@@ -23,8 +23,8 @@ class InMemoryRepository implements NoteRepository {
   }
   async createNote(input: Note): Promise<void> {
     const newNote = {
-      id: this.notes.length + 1,
       ...input,
+      id: this.notes.length + 1,
       date: new Date(),
     };
     await this.notes.push(newNote);

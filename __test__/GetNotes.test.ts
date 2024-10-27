@@ -1,5 +1,5 @@
 import GetNotes from "../src/application/usecases/GetNotes";
-import repository from "../src/infra/repositories/InMemoryRepository";
+import repository from "../src/infra/repositories/in-memory/note/InMemoryRepository";
 
 test("should get all notes", async () => {
   console.log(repository);

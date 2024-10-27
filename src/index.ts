@@ -1,6 +1,6 @@
 import express from "express";
 import GetNotes from "./application/usecases/GetNotes";
-import respository from "./infra/repositories/InMemoryRepository";
+import respository from "./infra/repositories/in-memory/note/InMemoryRepository";
 import CreateNote from "./application/usecases/CreateNote";
 import GetNoteById from "./application/usecases/GetNoteById.";
 import NoteNotFoundError from "./domain/errors/NoteNotFoundError";
