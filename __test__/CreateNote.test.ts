@@ -1,5 +1,5 @@
-import CreateNote from "../src/application/usecases/CreateNote";
-import GetNotes from "../src/application/usecases/GetNotes";
+import CreateNote from "../src/application/usecases/note/CreateNote";
+import GetNotes from "../src/application/usecases/note/GetNotes";
 import repository from "../src/infra/repositories/InMemoryRepository";
 import prismaRepository from "../src/infra/repositories/PrismaRepository";
 
