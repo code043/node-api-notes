@@ -1,5 +1,5 @@
-import GetNoteById from "../src/application/usecases/GetNoteById.";
-import UpdateNote from "../src/application/usecases/UpdateNote";
+import GetNoteById from "../src/application/usecases/note/GetNoteById.";
+import UpdateNote from "../src/application/usecases/note/UpdateNote";
 import repository from "../src/infra/repositories/in-memory/note/InMemoryRepository";
 
 test("should update a note", async () => {

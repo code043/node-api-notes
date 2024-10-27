@@ -1,6 +1,6 @@
 import NoteRepository from "../../application/repositories/NoteRepository";
-import { Note } from "../../domain/entities/note";
 import { PrismaClient } from "@prisma/client";
+import Note from "../../domain/entities/note";
 
 const prisma = new PrismaClient();
 

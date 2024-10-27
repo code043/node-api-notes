@@ -1,4 +1,4 @@
-import NoteRepository from "../repositories/NoteRepository";
+import NoteRepository from "../../repositories/NoteRepository";
 
 class GetNotes {
   repositorio;

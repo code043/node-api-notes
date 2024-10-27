@@ -1,4 +1,4 @@
-import GetNotes from "../src/application/usecases/GetNotes";
+import GetNotes from "../src/application/usecases/note/GetNotes";
 import repository from "../src/infra/repositories/in-memory/note/InMemoryRepository";
 
 test("should get all notes", async () => {

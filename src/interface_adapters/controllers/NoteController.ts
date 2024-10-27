@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import GetNotes from "../../application/usecases/GetNotes";
 
-import GetNoteById from "../../application/usecases/GetNoteById.";
-import NoteNotFoundError from "../../domain/errors/NoteNotFoundError";
-import CreateNote from "../../application/usecases/CreateNote";
-import UpdateNote from "../../application/usecases/UpdateNote";
-import DeleteNote from "../../application/usecases/DeleteNote";
 import PrismaRepository from "../../infra/repositories/PrismaRepository";
+import CreateNote from "../../application/usecases/note/CreateNote";
+import DeleteNote from "../../application/usecases/note/DeleteNote";
+import GetNoteById from "../../application/usecases/note/GetNoteById.";
+import GetNotes from "../../application/usecases/note/GetNotes";
+import UpdateNote from "../../application/usecases/note/UpdateNote";
+import NoteNotFoundError from "../../domain/errors/NoteNotFoundError";
 
 export const NoteController = {
   async getAllNotes(req: Request, res: Response) {
