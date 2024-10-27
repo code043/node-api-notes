@@ -23,7 +23,6 @@ export const NoteController = {
     }
   },
   async getNoteById(req: Request, res: Response) {
-    //
     const { id } = req.params;
     const getNote = new GetNoteById(PrismaRepository);
     try {
