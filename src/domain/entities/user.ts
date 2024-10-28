@@ -5,7 +5,6 @@ export default class User {
     readonly name: string,
     readonly email: string,
     readonly password: string,
-    readonly notes?: Note[],
     readonly image?: string,
     readonly id?: number
   ) {}
