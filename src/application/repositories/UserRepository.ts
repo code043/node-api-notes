@@ -1,4 +1,4 @@
-import { User } from "discord.js";
+import User from "../../domain/entities/user";
 
 export default interface UserRepository {
   create(Input: User): Promise<User>;

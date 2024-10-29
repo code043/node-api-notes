@@ -1,8 +1,12 @@
+import UserRepository from "../../../../application/repositories/UserRepository";
+import User from "../../../../domain/entities/user";
+
 class InMemoryUserRepository implements UserRepository {
   private users: User[] = [];
   constructor() {
     this.users = [];
   }
+
   async updateUser(id: number, Input: User): Promise<void> {
     for (let i = 0; i < this.users.length; i++) {
       if (this.users[i].id === id) {
