@@ -14,7 +14,7 @@ class InMemoryUserRepository implements UserRepository {
       }
     }
   }
-  async getUsers(): Promise<User[]> {
+  async getUsers(): Promise<Omit<User[], "password">> {
     return await this.users;
   }
   async getUserById(id: number): Promise<User[]> {
